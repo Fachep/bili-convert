@@ -47,8 +47,10 @@
 		module.exports = bc;
 	} else if (typeof define === 'function' && define.amd) {
 		define('bili-convert',['./lli.js'],function(lli){bc.lli=lli;return bc});
+	} else if (typeof window !== 'undefined') {
+		bc.lli=window.Module;
+		window.bc = bc;
 	} else {
-		bc.lli=Module;
 		this.bc = bc;
 	}
 }).call(function() {
